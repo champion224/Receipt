@@ -35,36 +35,21 @@ if (itemsPerPageSelect) {
 
 
   // --- load / save ---
-   fetch('https://champion224.github.io/main/Receipt/DB/saveItem.php', {  // 변경된 주소
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(window.items)
-  })
-  .then(res => res.json())
-  .then(data => {
-    if(data.status === 'success') {
-      console.log('서버 저장 완료');
-    } else {
-      alert('서버 저장 실패: ' + (data.message || ''));
-    }
-  })
-  .catch(() => {
-    alert('서버 저장 중 오류가 발생했습니다.');
-  });
+   // 데이터 저장
+function saveItems() {
+  localStorage.setItem("items", JSON.stringify(window.items));
+  alert("저장 완료! (localStorage)");
 }
 
+// 데이터 불러오기
 function loadItems() {
-  fetch('/Receipt/DB/load.php')
-    .then(res => res.json())
-    .then(data => {
-      window.items = Array.isArray(data) ? data : [];
-      renderTable(currentPage);
-    })
-    .catch(() => {
-      window.items = [];
-      renderTable(currentPage);
-    });
-} 
+  const saved = localStorage.getItem("items");
+  if (saved) {
+    window.items = JSON.parse(saved);
+    renderItems(); // 네가 쓰는 렌더링 함수 호출
+  }
+}
+
 
   // --- 렌더링 / 페이지네이션 / 편집 / 삭제 ---
   function renderTable(page = 1) {
