@@ -35,8 +35,7 @@ if (itemsPerPageSelect) {
 
 
   // --- load / save ---
-  function saveItems() {
-  fetch('http://192.168.0.117:49164/Receipt/DB/saveItem.php', {
+   fetch('https://champion224.github.io/main/Receipt/DB/saveItem.php', {  // 변경된 주소
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(window.items)
