@@ -46,7 +46,7 @@ function loadItems() {
   const saved = localStorage.getItem("items");
   if (saved) {
     window.items = JSON.parse(saved);
-    renderItems(); // 네가 쓰는 렌더링 함수 호출
+    renderTable(currentPage);
   }
 }
 
