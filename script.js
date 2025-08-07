@@ -212,7 +212,7 @@ function loadItems() {
   });
 
   goExpiryPageBtn.addEventListener('click', () => {
-    window.open('../Expiration Date/index2.html', '_blank');
+    window.open('https://champion224.github.io/ExpirationDate/', '_blank');
   });
 
   // 다른 탭에서 localStorage 변경 시 감지
@@ -510,5 +510,3 @@ function loadItems() {
   });
 
 })();
-
-
